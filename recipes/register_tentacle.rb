@@ -24,18 +24,15 @@ server = node['octopus']['server']
 api = node['octopus']['api']
 
 unless (node['octopus']['tentacle']['role']).nil? || (node['octopus']['tentacle']['role']) == 0
-	rolelist = nil
-		(node['octopus']['tentacle']['role']).each do |role|
+  rolelist = nil
+    (node['octopus']['tentacle']['role']).each do |role|
 		if rolelist.nil? || rolelist == 0
       rolelist = "--role=#{role}"
-      puts $rolelist
 		else
       rolelist << " --role=#{role}"
-      puts $rolelist
 		end
 		end
   rolelist = rolelist.strip
-  puts $rolelist
 end
 
 # tenant support (optional)
